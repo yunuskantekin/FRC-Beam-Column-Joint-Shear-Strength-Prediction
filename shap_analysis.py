@@ -23,7 +23,7 @@ def _nice_bounds(lo, hi):
 
 
 def _fmt_dep_tick(val, feat_name, is_max):
-    """Format a colorbar min/max tick label for the dependence plot grid."""
+    # formats colorbar min/max tick labels for the dependence plot grid
     if feat_name in ('ρb', 'ρc', 'ρv', 'Vf'):
         return f'{val * 100:.2f}%'
     elif feat_name == 'fyv':
