@@ -61,13 +61,18 @@ class FRCPredictorApp:
         try:
             print("Initializing pretrained models.")
             _code_dir = os.path.dirname(os.path.abspath(__file__))
-            _export_dirs = sorted([
-                d for d in os.listdir(_code_dir)
-                if d.startswith('Export_') and os.path.isdir(os.path.join(_code_dir, d))
-            ])
-            if not _export_dirs:
-                raise FileNotFoundError
-            _joblib_path = os.path.join(_code_dir, _export_dirs[-1], 'FRC_BCJ_Rep_ML_Models.joblib')
+            # check root directory first, then fall back to latest Export_ folder
+            _root_path = os.path.join(_code_dir, 'FRC_BCJ_Rep_ML_Models.joblib')
+            if os.path.exists(_root_path):
+                _joblib_path = _root_path
+            else:
+                _export_dirs = sorted([
+                    d for d in os.listdir(_code_dir)
+                    if d.startswith('Export_') and os.path.isdir(os.path.join(_code_dir, d))
+                ])
+                if not _export_dirs:
+                    raise FileNotFoundError
+                _joblib_path = os.path.join(_code_dir, _export_dirs[-1], 'FRC_BCJ_Rep_ML_Models.joblib')
             data = joblib.load(_joblib_path)
 
             self.models = data['models']
