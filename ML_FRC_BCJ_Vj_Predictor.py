@@ -54,6 +54,13 @@ class FRCPredictorApp:
 
         self.root.configure(bg=self.bg_color)
 
+        self.feature_display = {
+            'hb': 'hb', 'bb': 'bb', 'hc': 'hc', 'bc': 'bc',
+            'fc': "f'c", 'fyv': 'fyv', 'rhob': 'ρb',
+            'rhoc': 'ρc', 'rhov': 'ρv', 'vf': 'Vf',
+            'ar': 'Lf/Df', 'ftf': 'ftf', 'n': 'n'
+        }
+
         self.load_models()
         self.create_gui()
 
@@ -305,18 +312,12 @@ class FRCPredictorApp:
     def get_range_info(self):
         info_lines = ["Valid Input Ranges (Training Data):", ""]
 
-        feature_display = {
-            'hb': 'hb', 'bb': 'bb', 'hc': 'hc', 'bc': 'bc',
-            'fc': "f'c", 'fyv': 'fyv', 'rhob': 'ρb',
-            'rhoc': 'ρc', 'rhov': 'ρv', 'vf': 'Vf',
-            'ar': 'Lf/Df', 'ftf': 'ftf', 'n': 'n'}
-
         for feature in self.selected_features:
             if feature not in self.categorical_cols:
                 min_val = self.feature_ranges[feature]['min']
                 max_val = self.feature_ranges[feature]['max']
 
-                display_name = feature_display.get(feature, feature)
+                display_name = self.feature_display.get(feature, feature)
                 info_lines.append(f"{display_name:8} : [{min_val:7.3f} - {max_val:7.3f}]")
 
         return "\n".join(info_lines)
@@ -351,7 +352,7 @@ class FRCPredictorApp:
 
                         if num_value < min_val or num_value > max_val:
                             out_of_range.append(
-                                f"{feature}: {num_value:.3f} (valid: {min_val:.3f}-{max_val:.3f})"
+                                f"{self.feature_display.get(feature, feature)}: {num_value:.3f} (valid: {min_val:.3f}-{max_val:.3f})"
                             )
                     except ValueError:
                         messagebox.showerror("Input Error", f"Invalid number for {feature}: {value}")
