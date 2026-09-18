@@ -2,7 +2,21 @@
 
 **Authors:** Yunus Kantekin, Burcu Burak Bakir, Rodrigo Sarlo
 
-This repository contains the complete source code for the machine learning analysis presented in the paper. Ten regression algorithms are trained and evaluated on a database of fiber reinforced concrete (FRC) beam-column joint specimens, and SHAP-based feature importance analysis is performed to interpret model predictions.
+This repository contains the code and dataset accompanying our paper, [Machine learning based prediction of joint shear strength for fiber reinforced concrete beam-column connections](https://doi.org/10.1016/j.compstruct.2026.120772), published in *Composite Structures* (2026). Ten regression algorithms are trained and evaluated on a database of fiber reinforced concrete (FRC) beam-column joint specimens, and SHAP-based feature importance analysis is performed to interpret model predictions.
+
+If you find our work useful in your research, please consider citing:
+
+```bibtex
+@article{kantekin2026machine,
+  title   = {Machine learning based prediction of joint shear strength for fiber reinforced concrete beam-column connections},
+  author  = {Kantekin, Yunus and Burak Bakir, Burcu and Sarlo, Rodrigo},
+  journal = {Composite Structures},
+  volume  = {395},
+  pages   = {120772},
+  year    = {2026},
+  doi     = {10.1016/j.compstruct.2026.120772}
+}
+```
 
 ## Models
 
@@ -42,6 +56,7 @@ Code/
 Python 3.12 or higher is required.
 
 ```bash
+cd Code
 pip install -r requirements.txt
 ```
 
@@ -53,7 +68,6 @@ pip install -r requirements.txt
 ### 2. Run the analysis
 
 ```bash
-cd Code
 python main.py
 ```
 
