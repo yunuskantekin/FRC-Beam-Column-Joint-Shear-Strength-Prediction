@@ -36,7 +36,7 @@ If you find our work useful in your research, please consider citing:
 ## Repository Structure
 
 ```
-Code/
+./
 ├── config.py                   # Constants, hyperparameter grids, GPU detection
 ├── data.py                     # Data loading and train/test split preparation
 ├── models.py                   # Model training and metric computation
@@ -51,12 +51,13 @@ Code/
 
 ## Getting Started
 
+Download and extract the repository ZIP, or clone the repository using Git. Open a terminal in the repository folder containing `requirements.txt`.
+
 ### 1. Install dependencies
 
 Python 3.12 or higher is required.
 
 ```bash
-cd Code
 pip install -r requirements.txt
 ```
 
@@ -81,10 +82,10 @@ python ML_FRC_BCJ_Vj_Predictor.py
 
 ## Outputs
 
-Each run creates a timestamped folder inside `Code/`:
+Each run automatically creates a timestamped output folder in the same directory as `main.py`.
 
 ```
-Code/
+./
 └── Export_TIMESTAMP/
     ├── ML_Detailed_Results_TIMESTAMP.xlsx
     ├── SHAP_Beeswarm_ALG_TIMESTAMP.tiff
